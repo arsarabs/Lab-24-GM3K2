@@ -29,7 +29,7 @@ public:
     //I chose an operator that's useful for sorting list
     // & the < operator compares two goats based on their age
     bool operator<(const Goat& other) const {
-        return this->age < other.age;
+        return this->name < other.name;
     }
 
     //for my 2nd choice, the << operaotr allows for easy output of Goats

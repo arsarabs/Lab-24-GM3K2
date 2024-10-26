@@ -15,13 +15,10 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(list<Goat> trip);
-void delete_goat(list<Goat>& trip);
-void add_goat(list<Goat>& trip, string[], string[]);
-void display_trip(list<Goat> trip);
+void delete_goat(set<Goat>& trip);
+void add_goat(set<Goat>& trip, string[], string[]);
+void display_trip(const set<Goat>& trip);
 int main_menu();
-
-
 
 int main() {
 
@@ -80,49 +77,22 @@ int main() {
     return 0;
 }
 
-int select_goat(list<Goat>& trip) {
-    display_trip(trip);
 
-    bool valid = false; // input validiation flag
-    int userChoice; // user's choice
-
-    if (trip.empty()) { // Check again if the trip is empty
-        return -1;
-    }
-    //until valid loop
-    while (!valid) {
-        cout << "Number of the goat to delete: " << endl;
-        cin >> userChoice;
-
-        // Check for input failure or invalid range
-        if (cin.fail() || userChoice < 1 || userChoice > trip.size()) {
-            cin.clear(); // Clear the error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "enter a number between 1 - " << trip.size() << endl;
-        }
-        else {
-            valid = true; // Valid input received
-        }
-    }
-    return userChoice; //return user's choice
-}
 void delete_goat(list<Goat>& trip) {
+    string name_to_delete;
     if (trip.empty()) { // Check if the trip has any Goats to delete
         cout << "The trip has no goats to delete." << endl;
         return;
     }
 
-    int choice = select_goat(trip); // Get the user's choice of Goat to delete
-    if (choice == -1) { // Check if selection was invalid
-        return;
-    }
-    //iterator to Goat to be deleted & moves iterator to ssaid Goat
-    auto it = trip.begin();
-    advance(it, choice - 1);
+    cout << "Enter name that you'd like to delete" << endl;
+    cin >> name_to_delete;
+    
+    //Now, we need to make a 
+    
 
-    trip.erase(it); // Remove the Goat from the trip list
 }
-void add_goat(list<Goat>& trip, string names[], string colors[]) {
+void add_goat(set<Goat>& trip, string names[], string colors[]) {
     //the strucutre of this function shouldn't be too bad (SEE BELOW)
 
     //1. Randomly select name from names array & color from the colors array
@@ -135,15 +105,20 @@ void add_goat(list<Goat>& trip, string names[], string colors[]) {
     //3.  Create a new Goat object with the selected attributes
     Goat new_goat(selected_name, selected_age, selected_color);
 
-    //4. Add the new Goat to the trip list (using push back)
-    trip.push_back(new_goat);
+    //4. Add the new Goat to the set 
+    auto result = trip.insert(new_goat);
 
-    //5. Output (with format)
-    cout << fixed << setprecision(0);
+    //5. check if insertion worked
+    if (result.second) {
+        cout << "Goat Added: " << new_goat << endl;
+    }
+    else {
+        cout << "Goat with name \"" << selected_name << "\" already exists. " << endl;
+    }
 
 }
 //This function displays all the details 
-void display_trip(list<Goat> trip) {
+void display_trip(const list<Goat> trip) {
     int index = 1; // Counter for numbering Goats
     set<string> unique_colors; // Set to store unique colors
 
