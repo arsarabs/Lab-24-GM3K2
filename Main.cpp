@@ -88,8 +88,17 @@ void delete_goat(list<Goat>& trip) {
     cout << "Enter name that you'd like to delete" << endl;
     cin >> name_to_delete;
     
-    //Now, we need to make a 
-    
+    //Now, we need to make a temp Goat object with only the name to search 
+    Goat temp(name_to_delete);
+    auto it = trip.find(temp);
+
+    if (it != trip.end()){
+        cout << "Deleting goat: " << *it << endl;
+        trip.erase(it);
+    }
+    else {
+        cout << "Goat with name \"" << name_to_delete << "\" not found." << endl;
+    }
 
 }
 void add_goat(set<Goat>& trip, string names[], string colors[]) {
