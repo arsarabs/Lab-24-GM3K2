@@ -24,4 +24,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Downloads\colors.txt" />
+    <Text Include="..\..\..\Downloads\names.txt" />
+  </ItemGroup>
 </Project>

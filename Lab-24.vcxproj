@@ -132,6 +132,10 @@
   <ItemGroup>
     <ClInclude Include="Goat.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Downloads\colors.txt" />
+    <Text Include="..\..\..\Downloads\names.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
