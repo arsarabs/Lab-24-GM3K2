@@ -30,7 +30,7 @@ int main() {
     int i = 0;
     ifstream fin("names.txt");
     ifstream fin1("colors.txt");
-    list<Goat> trip; // List to store Goats for the trip
+    set<Goat> trip; // List to store Goats for the trip
 
     // read & populate arrays for both names and colors arrays
     if (!fin) {
@@ -78,7 +78,7 @@ int main() {
 }
 
 
-void delete_goat(list<Goat>& trip) {
+void delete_goat(set<Goat>& trip) {
     string name_to_delete;
     if (trip.empty()) { // Check if the trip has any Goats to delete
         cout << "The trip has no goats to delete." << endl;
