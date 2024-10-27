@@ -124,10 +124,10 @@ void add_goat(set<Goat>& trip, string names[], string colors[]) {
     else {
         cout << "Goat with name \"" << selected_name << "\" already exists. " << endl;
     }
-
+     
 }
 //This function displays all the details 
-void display_trip(const list<Goat> trip) {
+void display_trip(const set<Goat>& trip) {
     int index = 1; // Counter for numbering Goats
     set<string> unique_colors; // Set to store unique colors
 

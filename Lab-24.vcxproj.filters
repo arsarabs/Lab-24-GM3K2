@@ -25,7 +25,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\Downloads\colors.txt" />
-    <Text Include="..\..\..\Downloads\names.txt" />
+    <Text Include="..\..\..\Downloads\colors.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="..\..\..\Downloads\names.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
